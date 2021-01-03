@@ -21,9 +21,18 @@ const Board = () => {
 
   const handleClickEvent = (i) => {
     const newSquares =[...squares];
+
+    const winnerDeclared = Boolean(calculateWinner(newSquares));
+    const squareFilled = Boolean(newSquares[i]);
+    if(winnerDeclared || squareFilled) {
+      return;
+    }
+
     newSquares[i] = xIsNext ? 'X' : 'O';     //Changes X and O on click
     setSquares(newSquares);
     setXIsNext(!xIsNext);
+
+    
   };
 
   const renderSquare = (i) => {
@@ -61,14 +70,23 @@ const Game = () => {
     <div className="game">
       Tic-Tac-Toe
       <Board />
+      <button type="button" className="resetButton" onClick={ refreshPage }> 
+        <span>Play Again!</span> 
+      </button>
     </div>
   );
 };
+
+
 
 ReactDOM.render(
   <Game />,
   document.getElementById('root')
 );
+
+function refreshPage(){ 
+  window.location.reload(); 
+}
 
 function calculateWinner(squares) {
   const lines = [
