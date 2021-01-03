@@ -3,6 +3,13 @@ import ReactDOM from 'react-dom';
 
 import './index.css';
 
+const Title = () => {
+  return(
+    <div className="title">
+      Tic Tac Toe
+    </div>
+  )};
+  
 const Square = (props) => {
   return(
     <button 
@@ -68,7 +75,7 @@ const Board = () => {
 const Game = () => {
   return (
     <div className="game">
-      Tic-Tac-Toe
+      <Title />
       <Board />
       <button type="button" className="resetButton" onClick={ refreshPage }> 
         <span>Play Again!</span> 
